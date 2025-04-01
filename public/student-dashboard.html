@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Exam Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Sidebar Navigation -->
+    <div class="flex h-screen">
+        <div class="w-64 bg-green-700 text-white shadow-lg">
+            <div class="p-4 flex items-center space-x-2 border-b border-green-600">
+                <i class="fas fa-graduation-cap text-2xl"></i>
+                <h1 class="text-xl font-bold">Student Portal</h1>
+            </div>
+            <nav class="p-4 space-y-2">
+                <a href="#" class="flex items-center space-x-2 p-2 bg-green-600 rounded-lg">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#available-tests" class="flex items-center space-x-2 p-2 hover:bg-green-600 rounded-lg transition">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Available Tests</span>
+                </a>
+                <a href="#results" class="flex items-center space-x-2 p-2 hover:bg-green-600 rounded-lg transition">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>My Results</span>
+                </a>
+                <a href="#profile" class="flex items-center space-x-2 p-2 hover:bg-green-600 rounded-lg transition">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+                <div class="pt-4 border-t border-green-600">
+                    <a href="index.html" class="flex items-center space-x-2 p-2 hover:bg-green-600 rounded-lg transition">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-gray-800">Student Dashboard</h2>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <i class="fas fa-bell text-gray-500 hover:text-green-600 cursor-pointer"></i>
+                        <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="h-8 w-8 rounded-full bg-green-100 flex items-center justify-center">
+                            <i class="fas fa-user text-green-600"></i>
+                        </div>
+                        <span class="text-sm font-medium">John Student</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="p-6">
+                <!-- Welcome Banner -->
+                <div class="bg-gradient-to-r from-green-500 to-green-600 rounded-lg shadow-lg text-white p-6 mb-6">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 class="text-2xl font-bold mb-2">Welcome back, John!</h2>
+                            <p class="opacity-90">You have 2 upcoming tests and 1 pending result.</p>
+                        </div>
+                        <i class="fas fa-user-graduate text-5xl opacity-20"></i>
+                    </div>
+                </div>
+
+                <!-- Upcoming Tests -->
+                <div class="bg-white rounded-lg shadow overflow-hidden mb-6">
+                    <div class="p-4 border-b border-gray-200">
+                        <h3 class="font-semibold text-lg">Upcoming Tests</h3>
+                    </div>
+                    <div class="divide-y divide-gray-200">
+                        <div class="p-4 hover:bg-gray-50 transition">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-medium">Mathematics Midterm</h4>
+                                    <p class="text-sm text-gray-500">Duration: 60 minutes | Available until: 25 May 2023</p>
+                                </div>
+                                <button class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition">
+                                    Start Test
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4 hover:bg-gray-50 transition">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-medium">Science Quiz 3</h4>
+                                    <p class="text-sm text-gray-500">Duration: 30 minutes | Available until: 20 May 2023</p>
+                                </div>
+                                <button class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition">
+                                    Start Test
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-gray-200 text-center">
+                        <a href="#available-tests" class="text-green-600 hover:text-green-800 text-sm font-medium">View All Tests</a>
+                    </div>
+                </div>
+
+                <!-- Recent Results -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-4 border-b border-gray-200">
+                        <h3 class="font-semibold text-lg">Recent Results</h3>
+                    </div>
+                    <div class="divide-y divide-gray-200">
+                        <div class="p-4 hover:bg-gray-50 transition">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-medium">English Final Exam</h4>
+                                    <p class="text-sm text-gray-500">Completed: 15 May 2023</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-lg font-bold mr-2">85%</span>
+                                    <div class="w-24 bg-gray-200 rounded-full h-2.5">
+                                        <div class="bg-green-600 h-2.5 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 hover:bg-gray-50 transition">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-medium">History Quiz 2</h4>
+                                    <p class="text-sm text-gray-500">Completed: 10 May 2023</p>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="text-lg font-bold mr-2">72%</span>
+                                    <div class="w-24 bg-gray-200 rounded-full h-2.5">
+                                        <div class="bg-yellow-500 h-2.5 rounded-full" style="width: 72%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 border-t border-gray-200 text-center">
+                        <a href="#results" class="text-green-600 hover:text-green-800 text-sm font-medium">View All Results</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Fetch student dashboard data
+        async function fetchStudentDashboard() {
+            try {
+                const response = await fetch('/api/student/dashboard');
+                const data = await response.json();
+                
+                // Update UI with real data
+                // document.querySelector('.welcome h2').textContent = `Welcome back, ${data.name}!`;
+                // ... etc
+                
+            } catch (error) {
+                console.error('Error fetching student dashboard:', error);
+            }
+        }
+
+        // Start test button functionality
+        document.querySelectorAll('button:contains("Start Test")').forEach(button => {
+            button.addEventListener('click', function() {
+                const testId = this.getAttribute('data-test-id');
+                window.location.href = `test-page.html?testId=${testId}`;
+            });
+        });
+
+        // Call on page load
+        fetchStudentDashboard();
+    </script>
+</body>
+</html>
