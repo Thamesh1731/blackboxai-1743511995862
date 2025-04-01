@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Signup - Exam Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .signup-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/590493/pexels-photo-590493.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="signup-bg min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-xl overflow-hidden w-full max-w-md">
+        <div class="bg-green-600 py-4 px-6">
+            <h2 class="text-2xl font-bold text-white flex items-center">
+                <i class="fas fa-user-plus mr-2"></i> Student Registration
+            </h2>
+        </div>
+        
+        <form id="studentSignupForm" class="p-6 space-y-4">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-user text-gray-400"></i>
+                    </div>
+                    <input type="text" id="username" name="username" required
+                        class="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                        placeholder="Choose a username">
+                </div>
+                <p id="usernameError" class="mt-1 text-xs text-red-600 hidden">Username already taken</p>
+            </div>
+            
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-envelope text-gray-400"></i>
+                    </div>
+                    <input type="email" id="email" name="email" required
+                        class="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                        placeholder="Enter your email">
+                </div>
+                <p id="emailError" class="mt-1 text-xs text-red-600 hidden">Email already registered</p>
+            </div>
+            
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-lock text-gray-400"></i>
+                    </div>
+                    <input type="password" id="password" name="password" required minlength="8"
+                        class="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                        placeholder="Create password (min 8 chars)">
+                </div>
+                <div class="mt-1 text-xs text-gray-500">
+                    <p id="length" class="text-gray-500">✓ At least 8 characters</p>
+                </div>
+            </div>
+            
+            <div>
+                <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-lock text-gray-400"></i>
+                    </div>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required
+                        class="pl-10 w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                        placeholder="Confirm your password">
+                </div>
+                <p id="passwordMatch" class="mt-1 text-xs text-red-600 hidden">Passwords don't match</p>
+            </div>
+            
+            <div class="flex items-center">
+                <input id="terms" name="terms" type="checkbox" required
+                    class="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded">
+                <label for="terms" class="ml-2 block text-sm text-gray-700">
+                    I agree to the <a href="#" class="text-green-600 hover:text-green-500">Terms of Service</a> and <a href="#" class="text-green-600 hover:text-green-500">Privacy Policy</a>
+                </label>
+            </div>
+            
+            <div>
+                <button type="submit"
+                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition">
+                    <i class="fas fa-user-plus mr-2"></i> Create Account
+                </button>
+            </div>
+        </form>
+        
+        <div class="bg-gray-50 px-6 py-4 border-t border-gray-200">
+            <div class="text-sm text-center">
+                <p class="text-gray-600">Already have an account? <a href="student-login.html" class="text-green-600 hover:text-green-500">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('studentSignupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            // Validate password match
+            if (password !== confirmPassword) {
+                document.getElementById('passwordMatch').classList.remove('hidden');
+                return;
+            } else {
+                document.getElementById('passwordMatch').classList.add('hidden');
+            }
+            
+            try {
+                const response = await fetch('/api/student/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    window.location.href = 'student-dashboard.html';
+                } else {
+                    if (data.error.includes('username')) {
+                        document.getElementById('usernameError').classList.remove('hidden');
+                    }
+                    if (data.error.includes('email')) {
+                        document.getElementById('emailError').classList.remove('hidden');
+                    }
+                    alert('Registration failed: ' + data.error);
+                }
+            } catch (error) {
+                console.error('Signup error:', error);
+                alert('Registration failed. Please try again.');
+            }
+        });
+
+        // Password strength indicator
+        document.getElementById('password').addEventListener('input', function() {
+            const length = document.getElementById('length');
+            if (this.value.length >= 8) {
+                length.classList.remove('text-gray-500');
+                length.classList.add('text-green-500');
+            } else {
+                length.classList.remove('text-green-500');
+                length.classList.add('text-gray-500');
+            }
+        });
+    </script>
+</body>
+</html>
