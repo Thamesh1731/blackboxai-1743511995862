@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Exam Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Sidebar Navigation -->
+    <div class="flex h-screen">
+        <div class="w-64 bg-blue-800 text-white shadow-lg">
+            <div class="p-4 flex items-center space-x-2 border-b border-blue-700">
+                <i class="fas fa-graduation-cap text-2xl"></i>
+                <h1 class="text-xl font-bold">Exam Portal</h1>
+            </div>
+            <nav class="p-4 space-y-2">
+                <a href="#" class="flex items-center space-x-2 p-2 bg-blue-700 rounded-lg">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#tests" class="flex items-center space-x-2 p-2 hover:bg-blue-700 rounded-lg transition">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Tests</span>
+                </a>
+                <a href="#questions" class="flex items-center space-x-2 p-2 hover:bg-blue-700 rounded-lg transition">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Questions</span>
+                </a>
+                <a href="#results" class="flex items-center space-x-2 p-2 hover:bg-blue-700 rounded-lg transition">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Results</span>
+                </a>
+                <a href="#students" class="flex items-center space-x-2 p-2 hover:bg-blue-700 rounded-lg transition">
+                    <i class="fas fa-users"></i>
+                    <span>Students</span>
+                </a>
+                <div class="pt-4 border-t border-blue-700">
+                    <a href="#" class="flex items-center space-x-2 p-2 hover:bg-blue-700 rounded-lg transition">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="index.html" class="flex items-center space-x-2 p-2 hover:bg-blue-700 rounded-lg transition">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <!-- Top Bar -->
+            <header class="bg-white shadow-sm p-4 flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-gray-800">Admin Dashboard</h2>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <i class="fas fa-bell text-gray-500 hover:text-blue-600 cursor-pointer"></i>
+                        <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
+                            <i class="fas fa-user text-blue-600"></i>
+                        </div>
+                        <span class="text-sm font-medium">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="p-6">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Total Tests</p>
+                                <h3 class="text-2xl font-bold">24</h3>
+                            </div>
+                            <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Active Students</p>
+                                <h3 class="text-2xl font-bold">156</h3>
+                            </div>
+                            <div class="p-3 rounded-full bg-green-100 text-green-600">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Questions</p>
+                                <h3 class="text-2xl font-bold">342</h3>
+                            </div>
+                            <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-500 text-sm">Avg. Score</p>
+                                <h3 class="text-2xl font-bold">78%</h3>
+                            </div>
+                            <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Tests and Performance Chart -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <!-- Recent Tests -->
+                    <div class="bg-white rounded-lg shadow overflow-hidden">
+                        <div class="p-4 border-b border-gray-200">
+                            <h3 class="font-semibold text-lg">Recent Tests</h3>
+                        </div>
+                        <div class="divide-y divide-gray-200">
+                            <div class="p-4 hover:bg-gray-50 transition cursor-pointer">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-medium">Midterm Exam - Spring 2023</h4>
+                                        <p class="text-sm text-gray-500">Created: 15 May 2023</p>
+                                    </div>
+                                    <span class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Active</span>
+                                </div>
+                            </div>
+                            <div class="p-4 hover:bg-gray-50 transition cursor-pointer">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-medium">Final Exam - Spring 2023</h4>
+                                        <p class="text-sm text-gray-500">Created: 10 May 2023</p>
+                                    </div>
+                                    <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded-full">Completed</span>
+                                </div>
+                            </div>
+                            <div class="p-4 hover:bg-gray-50 transition cursor-pointer">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h4 class="font-medium">Quiz 3 - Module 4</h4>
+                                        <p class="text-sm text-gray-500">Created: 5 May 2023</p>
+                                    </div>
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-full">Draft</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t border-gray-200 text-center">
+                            <a href="#tests" class="text-blue-600 hover:text-blue-800 text-sm font-medium">View All Tests</a>
+                        </div>
+                    </div>
+
+                    <!-- Performance Chart -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="font-semibold text-lg mb-4">Test Performance</h3>
+                        <canvas id="performanceChart" height="200"></canvas>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <h3 class="font-semibold text-lg mb-4">Quick Actions</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <button class="flex flex-col items-center justify-center p-4 border border-blue-200 rounded-lg hover:bg-blue-50 transition">
+                            <i class="fas fa-plus-circle text-blue-600 text-2xl mb-2"></i>
+                            <span class="text-sm">Create Test</span>
+                        </button>
+                        <button class="flex flex-col items-center justify-center p-4 border border-green-200 rounded-lg hover:bg-green-50 transition">
+                            <i class="fas fa-question-circle text-green-600 text-2xl mb-2"></i>
+                            <span class="text-sm">Add Questions</span>
+                        </button>
+                        <button class="flex flex-col items-center justify-center p-4 border border-purple-200 rounded-lg hover:bg-purple-50 transition">
+                            <i class="fas fa-file-export text-purple-600 text-2xl mb-2"></i>
+                            <span class="text-sm">Export Results</span>
+                        </button>
+                        <button class="flex flex-col items-center justify-center p-4 border border-yellow-200 rounded-lg hover:bg-yellow-50 transition">
+                            <i class="fas fa-user-plus text-yellow-600 text-2xl mb-2"></i>
+                            <span class="text-sm">Add Student</span>
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Initialize performance chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        const performanceChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Midterm', 'Quiz 1', 'Quiz 2', 'Quiz 3', 'Final'],
+                datasets: [{
+                    label: 'Average Score %',
+                    data: [72, 85, 78, 90, 68],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.7)',
+                        'rgba(16, 185, 129, 0.7)',
+                        'rgba(139, 92, 246, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(239, 68, 68, 0.7)'
+                    ],
+                    borderColor: [
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(16, 185, 129, 1)',
+                        'rgba(139, 92, 246, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(239, 68, 68, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Fetch real data from API
+        async function fetchDashboardData() {
+            try {
+                const response = await fetch('/api/admin/dashboard');
+                const data = await response.json();
+                
+                // Update UI with real data
+                // document.getElementById('totalTests').textContent = data.totalTests;
+                // document.getElementById('activeStudents').textContent = data.activeStudents;
+                // ... etc
+                
+            } catch (error) {
+                console.error('Error fetching dashboard data:', error);
+            }
+        }
+
+        // Call on page load
+        fetchDashboardData();
+    </script>
+</body>
+</html>
